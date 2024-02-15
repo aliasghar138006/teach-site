@@ -1,0 +1,30 @@
+.container {
+    padding: 50px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container div {
+    width: 200px;
+    height: 200px;
+}
+
+.container div:last-child li:first-child {
+    display: flex;
+    text-indent: 10px;
+    align-items: center;
+    color: rgb(201, 23, 85);
+}
+
+.container div:last-child li:last-child {
+    display: flex;
+    text-indent: 10px;
+    align-items: center;
+    color: rgb(98, 186, 212);
+}
+
+
+.container p {
+    text-align: justify;
+}

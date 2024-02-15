@@ -1,0 +1,60 @@
+.container {
+    position: fixed;
+    top: 0px;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px  3px;
+    
+}
+
+.right {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    border-left: 2px solid #0ea5e9;
+    padding-left: 15px;
+}
+
+.logo img {
+    border-radius: 50%;
+    
+}
+
+.list  {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.list li {
+    padding: 5px 30px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.list li:hover {
+    color: blue;
+    transition: all ease 0.5s;
+}
+
+.left button {
+    padding: 10px 20px;
+    background-color: #0ea5e9;
+    color: white;
+    margin: 0px 20px;
+    border: 1px solid #0ea5e9;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.left button:hover {
+    background-color: white;
+    color: #0ea5e9;
+    transition: all ease 0.5s;
+}
