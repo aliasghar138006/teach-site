@@ -1,0 +1,31 @@
+.container {
+    width: fit-content;
+    border-radius: 10px;
+    margin: 200px auto;
+    padding: 20px 50px;
+    background-color: #e6e7ea;
+}
+
+.container label {
+    display: block;
+}
+
+.container div {
+    margin: 20px 0px;
+}
+
+
+
+.container .btn {
+    text-align: center;
+    background-color: #0ea5e9;
+    color: white;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.container span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

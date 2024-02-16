@@ -3,23 +3,21 @@ import Image from "next/image";
 import styles from "./Header.module.css";
 import { IoIosArrowDown } from "react-icons/io";
 import List from "./List";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
 function Header() {
-  const [category, setCategory] = useState([
-    { subCategory: ["ریاضی1"], title: "دروس دانشگاهی", show: false },
-    { subCategory: ["React", "Vue"], title: "طراحی سایت", show: false },
-    {
-      subCategory: ["ReactNative", "Xamarin"],
-      title: "طراحی اپلیکیشن",
-      show: false,
-    },
-    {
-      subCategory: ["مسیر برنامه نویسی", "هوش مصنوعی چیست؟"],
-      title: "مقالات",
-      show: false,
-    },
-  ]);
+  const [category, setCategory] = useState([]);
+
+  useEffect(() => {
+    const categoryData = async () => {
+      const res = await fetch("http://127.0.0.1:8000/category/");
+      const data = await res.json();
+      setCategory(data);
+    };
+
+    categoryData();
+  }, []);
 
   const EnterHandler = (index) => {
     const categoriesList = [...category];
@@ -37,15 +35,18 @@ function Header() {
     <div className={styles.container}>
       <div className={styles.right}>
         <div className={styles.logo}>
-          <Image src={"/images/logo.jpg"} width={70} height={70} alt="logo" />
+          <Image
+            src={"/images/logo.jpg"}
+            width={70}
+            height={70}
+            alt="logo"
+            priority={1}
+          />
         </div>
         <ul className={styles.list}>
           {category.map((item, index) => (
-            <div key={index}>
-              <li
-                onMouseEnter={() => EnterHandler(index)}
-                onMouseLeave={() => LeaveHandler(index)}
-              >
+            <div key={index} onMouseLeave={() => LeaveHandler(index)}>
+              <li onMouseEnter={() => EnterHandler(index)}>
                 {item.title}
                 <IoIosArrowDown />
               </li>
@@ -55,8 +56,12 @@ function Header() {
         </ul>
       </div>
       <div className={styles.left}>
-        <button>عضویت</button>
-        <button>ورود</button>
+        <Link href={"/signup"}>
+          <button>عضویت</button>
+        </Link>
+        <Link href={"/signin"}>
+          <button>ورود</button>
+        </Link>
       </div>
     </div>
   );

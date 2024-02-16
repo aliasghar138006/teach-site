@@ -7,7 +7,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px  3px;
-    
+    border-bottom: 1px solid aqua;
 }
 
 .right {
@@ -29,6 +29,10 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.list div {
+    padding: 10px 0px;
 }
 
 .list li {
