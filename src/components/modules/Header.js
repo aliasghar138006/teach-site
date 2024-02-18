@@ -8,6 +8,7 @@ import Link from "next/link";
 
 function Header() {
   const [category, setCategory] = useState([]);
+  const [profile, setProfile] = useState(false);
 
   useEffect(() => {
     const categoryData = async () => {
@@ -17,6 +18,9 @@ function Header() {
     };
 
     categoryData();
+    if (document.cookie) {
+      setProfile(true);
+    }
   }, []);
 
   const EnterHandler = (index) => {
@@ -56,12 +60,20 @@ function Header() {
         </ul>
       </div>
       <div className={styles.left}>
-        <Link href={"/signup"}>
-          <button>عضویت</button>
-        </Link>
-        <Link href={"/signin"}>
-          <button>ورود</button>
-        </Link>
+        {profile ? (
+          <Link href={"/"}>
+            <button>حساب کاربری</button>
+          </Link>
+        ) : (
+          <div>
+            <Link href={"/signup"}>
+              <button>عضویت</button>
+            </Link>
+            <Link href={"/signin"}>
+              <button>ورود</button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

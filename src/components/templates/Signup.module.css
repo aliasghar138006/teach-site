@@ -15,6 +15,12 @@
 }
 
 
+.role {
+    display: flex;
+    align-items: center;
+}
+
+
 
 .container .btn {
     text-align: center;

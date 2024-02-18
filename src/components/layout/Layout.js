@@ -1,7 +1,7 @@
 import Header from "@/components/modules/Header";
 import Footer from "../modules/Footer";
 
-function Layout({ children }) {
+async function Layout({ children }) {
   return (
     <div>
       <Header />
