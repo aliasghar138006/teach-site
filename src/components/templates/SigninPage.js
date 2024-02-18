@@ -1,17 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Signup.module.css";
 import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
-import { useRouter } from "next/navigation";
-import { HashPassword } from "@/utils/Operations";
+import { redirect, useRouter } from "next/navigation";
+import { HashPassword, VerifyPassword } from "@/utils/Operations";
+import CheckAuth from "@/utils/CheckAuth";
 
 function SigninPage() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
   const router = useRouter();
+  useEffect(() => {
+    const Authentication = async () => {
+      const auth = await CheckAuth();
+
+      if (auth) {
+        router.push("/account");
+      }
+    };
+
+    Authentication();
+  }, []);
 
   const url = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -28,8 +39,10 @@ function SigninPage() {
     console.log(data);
     if (data.status == 200) {
       toast.success("ورود با موفقیت انجام شد");
+
       setTimeout(() => {
-        router.push("/account");
+        router.replace("/account");
+        location.reload();
       }, 3000);
       const hashedPassword = await HashPassword(password);
       document.cookie = JSON.stringify({

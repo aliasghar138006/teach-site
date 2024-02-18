@@ -5,10 +5,14 @@ import { IoIosArrowDown } from "react-icons/io";
 import List from "./List";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import CheckAuth from "@/utils/CheckAuth";
+import { redirect, useRouter } from "next/navigation";
 
 function Header() {
   const [category, setCategory] = useState([]);
   const [profile, setProfile] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     const categoryData = async () => {
@@ -18,9 +22,15 @@ function Header() {
     };
 
     categoryData();
-    if (document.cookie) {
-      setProfile(true);
-    }
+    const Authentication = async () => {
+      const auth = await CheckAuth();
+
+      if (auth) {
+        setProfile(true);
+      }
+    };
+
+    Authentication();
   }, []);
 
   const EnterHandler = (index) => {
