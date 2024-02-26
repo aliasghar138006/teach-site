@@ -1,10 +1,10 @@
 import Image from "next/image";
 import styles from "./MainPage.module.css";
-import { sp, e2p } from "@/utils/Operations";
 import { GiTeacher } from "react-icons/gi";
 import { FaMoneyBill } from "react-icons/fa";
 import TitleBox from "../modules/TitleBox";
 import Slider from "../modules/Slider";
+import Card from "../modules/Card";
 
 async function MainPage() {
   const url = process.env.BASE_URL;
@@ -15,37 +15,31 @@ async function MainPage() {
   const data = await res.json(res);
   const newCourses = data.slice(0, 4);
 
+  const articleRes = await fetch(`${url}/articles/`, {
+    next: { revalidate: 5 },
+  });
+
+  const articleData = await articleRes.json();
+  const newArticles = articleData.slice(0, 4);
+
   return (
     <div className={styles.container}>
       <Slider />
       <TitleBox title="جدیدترین دوره ها" />
       <div className={styles.courses}>
         {newCourses?.map((item, index) => (
-          <div className={styles.card} key={index}>
-            <Image
-              width={250}
-              height={150}
-              alt="image"
-              src={`${url.concat(item.image)}`}
-            />
-            <div>{item.title}</div>
-            <p className={styles.description}>{item.description}</p>
-            <div className={styles.details}>
-              <div>
-                <span>
-                  <GiTeacher />
-                </span>
-                {item.teacher}
-              </div>
-              <div>
-                <span>
-                  <FaMoneyBill />
-                </span>
-                {sp(item.price)}تومان
-              </div>
-            </div>
-            <button>مشاهده دوره</button>
-          </div>
+          <Card key={index} item={item} />
+        ))}
+      </div>
+      <TitleBox title="جدیدترین مقالات" />
+      <div className={styles.courses}>
+        {newArticles?.map((item, index) => (
+          <Card
+            key={index}
+            item={item}
+            type="article"
+            titleBtn="مطالعه مقاله"
+          />
         ))}
       </div>
     </div>

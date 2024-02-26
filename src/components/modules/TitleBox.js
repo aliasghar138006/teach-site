@@ -9,7 +9,7 @@ function TitleBox({ title }) {
         <div></div>
       </div>
       <div>
-        همه دوره ها
+        مشاهده همه
         <BiLeftArrowAlt />
       </div>
     </div>

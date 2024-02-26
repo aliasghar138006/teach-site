@@ -1,6 +1,6 @@
 .container {
     margin-top: 110px;
-    height: 1000px;
+    /* height: 1000px; */
     background-image: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);
     padding: 20px;
 }
