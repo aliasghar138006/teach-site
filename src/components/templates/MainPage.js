@@ -14,6 +14,8 @@ async function MainPage() {
   });
   const data = await res.json(res);
   const newCourses = data.slice(0, 4);
+  const filteredCoursesByScore = data.filter((item) => item.score > 3);
+  const popularCourses = filteredCoursesByScore.slice(0, 4);
 
   const articleRes = await fetch(`${url}/articles/`, {
     next: { revalidate: 5 },
@@ -28,6 +30,12 @@ async function MainPage() {
       <TitleBox title="جدیدترین دوره ها" />
       <div className={styles.courses}>
         {newCourses?.map((item, index) => (
+          <Card key={index} item={item} />
+        ))}
+      </div>
+      <TitleBox title="محبوب ترین دوره ها" />
+      <div className={styles.courses}>
+        {popularCourses?.map((item, index) => (
           <Card key={index} item={item} />
         ))}
       </div>

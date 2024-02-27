@@ -21,13 +21,13 @@ function Slider() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <Image src="/images/test.jpg" layout="fill" alt="slide" />
+          <Image src="/images/test.jpg" fill alt="slide" />
         </SwiperSlide>
         <SwiperSlide>
-          <Image src="/images/next.jpg" layout="fill" alt="slide" />
+          <Image src="/images/next.jpg" fill alt="slide" />
         </SwiperSlide>
         <SwiperSlide>
-          <Image src="/images/vue.png" layout="fill" alt="slide" />
+          <Image src="/images/vue.png" fill alt="slide" />
         </SwiperSlide>
       </Swiper>
     </>
