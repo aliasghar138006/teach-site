@@ -4,6 +4,7 @@ import { GiTeacher } from "react-icons/gi";
 import { FaMoneyBill } from "react-icons/fa";
 import { FaUserPen } from "react-icons/fa6";
 import { sp } from "@/utils/Operations";
+import Link from "next/link";
 
 function Card({ item, type = "course", titleBtn = "مشاهده دوره" }) {
   const url = process.env.BASE_URL;
@@ -42,7 +43,13 @@ function Card({ item, type = "course", titleBtn = "مشاهده دوره" }) {
           </div>
         </div>
       )}
-      <button>{titleBtn}</button>
+      <Link
+        href={
+          type === "course" ? `/courses/${item.id}` : `/articles/${item.id}`
+        }
+      >
+        <button>{titleBtn}</button>
+      </Link>
     </div>
   );
 }
