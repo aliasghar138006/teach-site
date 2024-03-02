@@ -1,0 +1,52 @@
+.container {
+    padding: 20px 10px;
+    background-color: rgb(170, 236, 236);
+    border-radius: 10px;
+}
+
+
+
+.image {
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+}
+
+.image div {
+   
+}
+
+.container img {
+    border-radius: 50%;
+}
+
+.container form {
+    padding-right: 100px ;
+}
+
+
+.container div div {
+    /* margin: 50px 0px; */
+}
+
+.container label {
+    display: block;
+}
+
+.container input {
+    border: 2px solid aqua;
+    width: 80%;
+    padding: 5px 10px;
+    margin: 10px 0px;
+    border-radius: 7px;
+    
+}
+
+.btn {
+    width: fit-content;
+    padding: 5px 10px;
+    background-color: #0ea5e9;
+    color: white;
+    border-radius: 7px;
+    cursor: pointer;
+}

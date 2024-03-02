@@ -1,0 +1,49 @@
+.container {
+    padding: 200px 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.right {
+    width: 200px;
+    height: 400px;
+    padding: 50px 20px;
+    background-color: #0ea5e9;
+    border-radius: 15px;
+    color: white;
+}
+
+.right span {
+    display: block;
+    text-align: center;
+}
+
+.right span:first-child {
+    scale: 3;
+    margin: auto;
+}
+
+.right .operations {
+    margin: 20px auto;
+    
+}
+
+.operations div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0px;
+    cursor: pointer;
+    padding: 5px 15px;
+    border-radius: 7px;
+}
+
+.operations div:hover {
+    background-color: rgb(152, 217, 221);
+    color: #0ea5e9;
+    transition: all ease 0.3s;
+}
+
+.left {
+    width: 70%;
+}

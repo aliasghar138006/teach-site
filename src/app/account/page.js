@@ -1,3 +1,4 @@
+import Dashboard from "@/components/modules/Dashboard";
 import AccountPage from "@/components/templates/AccountPage";
 import { VerifyPassword } from "@/utils/Operations";
 import { cookies } from "next/headers";
@@ -26,7 +27,7 @@ async function page() {
   //   redirect("/signin");
   // }
 
-  return <AccountPage />;
+  return <Dashboard />;
 }
 
 export default page;

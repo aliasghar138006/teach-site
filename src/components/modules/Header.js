@@ -48,7 +48,7 @@ function Header() {
   return (
     <div className={styles.container}>
       <div className={styles.right}>
-        <div className={styles.logo}>
+        <div onClick={() => router.push("/")} className={styles.logo}>
           <Image
             src={"/images/logo.jpg"}
             width={70}
@@ -71,7 +71,7 @@ function Header() {
       </div>
       <div className={styles.left}>
         {profile ? (
-          <Link href={"/"}>
+          <Link href={"/account"}>
             <button>حساب کاربری</button>
           </Link>
         ) : (

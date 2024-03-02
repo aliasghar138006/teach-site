@@ -1,0 +1,17 @@
+.container {
+    padding: 20px 10px;
+    border: 2px solid aqua;
+    border-radius: 15px;
+    height: 70%;
+}
+
+.container h3 {
+    text-align: center;
+}
+
+.container div {
+    display: flex;
+    justify-content: space-between;
+    margin: 70px auto;
+    width: 60%;
+}
