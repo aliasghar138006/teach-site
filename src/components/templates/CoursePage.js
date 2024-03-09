@@ -3,14 +3,18 @@
 import styles from "@/components/templates/Course.module.css";
 import CheckAuth from "@/utils/CheckAuth";
 import { e2p, sp } from "@/utils/Operations";
+import userDataClient from "@/utils/userDataClient";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { FaStar } from "react-icons/fa";
 import { FaPlay } from "react-icons/fa";
 
 function CoursePage({ courseData }) {
   const [video, setVideo] = useState(courseData.videos[0]);
+  const [add, setAdd] = useState(true);
 
   const url = process.env.NEXT_PUBLIC_BASE_URL;
   const array = [];
@@ -26,9 +30,35 @@ function CoursePage({ courseData }) {
       if (!auth) {
         router.push("/signin");
       }
+      const userInfo = await userDataClient();
+      const course = userInfo.courses.filter(
+        (item) => item.id === courseData.id
+      );
+
+      if (course.length) {
+        setAdd(false);
+      }
     };
     Authuntication();
   }, []);
+
+  const addHandler = async () => {
+    const userData = await userDataClient();
+    const res = await fetch(`${url}/account/courses/add/${userData.userName}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: courseData.id }),
+    });
+    const data = await res.json();
+    if (data.id) {
+      toast.success("دوره با موفقیت اضافه شد");
+      router.push("/account");
+    } else {
+      toast.error("خطایی رخ داده است");
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -82,9 +112,16 @@ function CoursePage({ courseData }) {
               ))}
             </span>
           </div>
-          <button>افزودن به دوره های من</button>
+          {add ? (
+            <button onClick={addHandler}>افزودن به دوره های من</button>
+          ) : (
+            <Link href={"/account"}>
+              <button>رفتن به داشبورد</button>
+            </Link>
+          )}
         </div>
       </div>
+      <Toaster />
     </div>
   );
 }
