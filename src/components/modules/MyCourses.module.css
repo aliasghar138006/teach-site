@@ -16,3 +16,11 @@
     background-color: aqua;
     margin: 0px 10px;
 }
+
+.message {
+    background-color: rgba(222, 102, 102, 0.78);
+    padding: 7px 5px;
+    border: 2px solid rgb(136, 14, 14);
+    border-radius: 10px;
+    color: rgb(136, 14, 14);
+}
