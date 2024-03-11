@@ -1,7 +1,7 @@
 import styles from "@/components/templates/MainPage.module.css";
 import { BiLeftArrowAlt } from "react-icons/bi";
 
-function TitleBox({ title }) {
+function TitleBox({ title, seeAll = true }) {
   return (
     <div className={styles.titleContainer}>
       <div className={styles.titleBox}>
@@ -9,8 +9,12 @@ function TitleBox({ title }) {
         <div></div>
       </div>
       <div>
-        مشاهده همه
-        <BiLeftArrowAlt />
+        {seeAll && (
+          <div>
+            مشاهده همه
+            <BiLeftArrowAlt />
+          </div>
+        )}
       </div>
     </div>
   );

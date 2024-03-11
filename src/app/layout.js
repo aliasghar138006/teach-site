@@ -3,6 +3,7 @@ import "./globals.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "video-react/dist/video-react.css";
 import Layout from "@/components/layout/Layout";
 import localFont from "next/font/local";
 

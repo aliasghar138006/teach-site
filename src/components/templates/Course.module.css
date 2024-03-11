@@ -70,3 +70,49 @@
     cursor: pointer;
 }
 
+.addComment {
+    display: flex;
+    flex-direction: column;
+}
+
+.addComment button {
+    width: fit-content;
+    background-color: #0ea5e9;
+    color: white;
+    padding: 5px 15px;
+    margin: 20px 0px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.addComment textarea {
+    display: block;
+    padding: 20px;
+    width: 600px;
+    height: 100px;
+    outline: none;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+
+
+
+.comment {
+    background-color: #f3f4f6;
+    padding: 10px;
+    margin: 10px 0px;
+    border-radius: 10px;
+}
+
+.comment div {
+    display: flex;
+    justify-content: space-between;
+    color: gray;
+}
+
+.message {
+    font-size: 15px;
+    color: black;
+}
+
