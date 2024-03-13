@@ -5,13 +5,16 @@ import { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { useRouter } from "next/navigation";
 import { useRouter as routerData } from "next/router";
+import userDataClient from "@/utils/userDataClient";
 
 function Sidebar() {
+  const [role, setRole] = useState("user");
   const [style, setStyle] = useState({
     dashboard: true,
     myCourse: false,
     edit: false,
     exit: false,
+    add: false,
   });
 
   const router = useRouter();
@@ -19,6 +22,12 @@ function Sidebar() {
     if (style.dashboard) {
       router.push("/account");
     }
+    const getData = async () => {
+      const { role } = await userDataClient();
+      setRole(role);
+    };
+
+    getData();
   }, []);
 
   const clickHandler = (name) => {
@@ -28,6 +37,7 @@ function Sidebar() {
       courses: false,
       edit: false,
       exit: false,
+      add: false,
     };
     items[name] = true;
     setStyle(items);
@@ -63,6 +73,15 @@ function Sidebar() {
           item="edit"
           style={style.edit}
         />
+
+        {role === "teacher" && (
+          <Item
+            clickHandler={clickHandler}
+            title="افزودن دوره"
+            item="add"
+            style={style.add}
+          />
+        )}
 
         <Item
           clickHandler={clickHandler}

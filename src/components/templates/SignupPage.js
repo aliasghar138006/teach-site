@@ -27,7 +27,7 @@ function SignupPage() {
       }),
     });
     const data = await res.json();
-    console.log(data);
+
     if (data.id) {
       toast.success("ثبت نام با موفقیت انجام شد");
       setTimeout(() => {

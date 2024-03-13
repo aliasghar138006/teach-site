@@ -59,11 +59,16 @@ function Edit() {
     <div className={styles.container}>
       <div className={styles.image}>
         <Image
-          src={url.concat(data.profileImage)}
+          src={
+            data.profileImage
+              ? url.concat(data.profileImage)
+              : "/images/profile.jpg"
+          }
           width={150}
           height={150}
           alt="profile"
         />
+
         <div>{data.fullName}</div>
       </div>
       <form>
