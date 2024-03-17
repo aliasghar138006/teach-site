@@ -3,11 +3,11 @@ import userData from "@/utils/userData";
 import { redirect } from "next/navigation";
 
 async function page() {
-  const { role } = await userData();
-  if (!role === "teacher") {
+  const data = await userData();
+  if (!data.role === "teacher") {
     redirect("/");
   }
-  return <Add />;
+  return <Add userData={data} />;
 }
 
 export default page;

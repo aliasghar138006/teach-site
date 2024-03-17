@@ -1,0 +1,64 @@
+.container {
+    background-color: rgb(170, 236, 236);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.main {
+    display: flex;
+}
+
+.left {
+    padding: 20px 100px;
+}
+
+.container div {
+    margin: 10px 0px;
+
+}
+
+.container input , .container textarea {
+    border-radius: 5px;
+    padding: 5px;
+    display: block;
+    outline: none;
+    width: 100%;
+}
+
+.container button {
+    background-color: blue;
+    padding: 5px 10px;
+    border-radius: 7px;
+    color: white;
+    cursor: pointer;
+
+}
+
+.send {
+    width: 100%;
+    text-align: center;
+}
+
+
+.operations {
+    display: flex;
+    justify-content: space-between;
+}
+
+.operations button {
+    width: 40%;
+}
+
+.upload {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+}
+
+.upload span {
+    background-color: blue;
+    color: white;
+    padding: 0px 10px;
+    border-radius: 5px;
+}
