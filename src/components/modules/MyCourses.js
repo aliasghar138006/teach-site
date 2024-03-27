@@ -18,8 +18,6 @@ async function MyCourses() {
       item.teacher === userInfo.userName || item.teacher === userInfo.fullName
   );
 
-  console.log(teacherCourses);
-
   if (userInfo.role === "teacher") {
     return (
       <div className={styles.container}>
@@ -41,6 +39,22 @@ async function MyCourses() {
               {item.published ? "منتشر شده" : "در حال بررسی"}
             </div>
           </div>
+        ))}
+      </div>
+    );
+  } else if (userInfo.role === "admin") {
+    return (
+      <div className={styles.container}>
+        {!data.length && (
+          <div className={styles.message}>دوره ای برای نمایش وجود ندارد</div>
+        )}
+        {data?.map((item, index) => (
+          <Link key={index} href={`/courses/${item.id}`}>
+            <div className={styles.item}>
+              <span>{e2p(index + 1)}</span>
+              {item.title}
+            </div>
+          </Link>
         ))}
       </div>
     );

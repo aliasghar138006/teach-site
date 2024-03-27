@@ -6,7 +6,7 @@
 
 .right {
     width: 200px;
-    height: 400px;
+    height: fit-content;
     padding: 50px 20px;
     background-color: #0ea5e9;
     border-radius: 15px;

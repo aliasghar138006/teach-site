@@ -8,13 +8,16 @@ import { useRouter as routerData } from "next/router";
 import userDataClient from "@/utils/userDataClient";
 
 function Sidebar() {
-  const [role, setRole] = useState("user");
+  const [role, setRole] = useState("");
   const [style, setStyle] = useState({
     dashboard: true,
     myCourse: false,
     edit: false,
     exit: false,
     add: false,
+    allCourses: false,
+    teachers: false,
+    students: false,
   });
 
   const router = useRouter();
@@ -31,13 +34,15 @@ function Sidebar() {
   }, []);
 
   const clickHandler = (name) => {
-    console.log(routerData.pathname);
     const items = {
       dashboard: false,
       courses: false,
       edit: false,
       exit: false,
       add: false,
+      allCourses: false,
+      teachers: false,
+      students: false,
     };
     items[name] = true;
     setStyle(items);
@@ -83,12 +88,37 @@ function Sidebar() {
           />
         )}
 
-        <Item
-          clickHandler={clickHandler}
-          title="دوره های من"
-          item="courses"
-          style={style.courses}
-        />
+        {role === "admin" ? (
+          <>
+            <Item
+              clickHandler={clickHandler}
+              title="لیست دوره ها"
+              item="allCourses"
+              style={style.allCourses}
+            />
+
+            <Item
+              clickHandler={clickHandler}
+              title="لیست مدرسین "
+              item="teachers"
+              style={style.teachers}
+            />
+
+            <Item
+              clickHandler={clickHandler}
+              title="لیست دانشجویان"
+              item="students"
+              style={style.students}
+            />
+          </>
+        ) : (
+          <Item
+            clickHandler={clickHandler}
+            title="دوره های من"
+            item="courses"
+            style={style.courses}
+          />
+        )}
         <Item
           clickHandler={clickHandler}
           title="خروج"
