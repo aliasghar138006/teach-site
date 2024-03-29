@@ -3,6 +3,8 @@ import userData from "@/utils/userData";
 import Card from "./Card";
 import { e2p } from "@/utils/Operations";
 import Link from "next/link";
+import ItemBox from "../elements/ItemBox";
+import NotFound from "../elements/NotFound";
 async function MyCourses() {
   const userInfo = await userData();
   const url = process.env.BASE_URL;
@@ -22,16 +24,11 @@ async function MyCourses() {
     return (
       <div className={styles.container}>
         {!teacherCourses.length && (
-          <div className={styles.message}>دوره ای برای نمایش وجود ندارد</div>
+          <NotFound text="دوره ای برای نمایش وجود ندارد" />
         )}
         {teacherCourses?.map((item, index) => (
           <div className={styles.teacherCourses} key={index}>
-            <Link href={`/courses/${item.id}`}>
-              <div className={styles.item}>
-                <span>{e2p(index + 1)}</span>
-                {item.title}
-              </div>
-            </Link>
+            <ItemBox key={index} index={index} item={item} />
             <div
               className={styles.status}
               style={{ backgroundColor: item.published ? "green" : "orange" }}
@@ -45,16 +42,9 @@ async function MyCourses() {
   } else if (userInfo.role === "admin") {
     return (
       <div className={styles.container}>
-        {!data.length && (
-          <div className={styles.message}>دوره ای برای نمایش وجود ندارد</div>
-        )}
+        {!data.length && <NotFound text="دوره ای برای نمایش وجود ندارد" />}
         {data?.map((item, index) => (
-          <Link key={index} href={`/courses/${item.id}`}>
-            <div className={styles.item}>
-              <span>{e2p(index + 1)}</span>
-              {item.title}
-            </div>
-          </Link>
+          <ItemBox key={index} index={index} item={item} />
         ))}
       </div>
     );
@@ -62,15 +52,10 @@ async function MyCourses() {
     return (
       <div className={styles.container}>
         {!userInfo.courses.length && (
-          <div className={styles.message}>دوره ای برای نمایش وجود ندارد</div>
+          <NotFound text="دوره ای برای نمایش وجود ندارد" />
         )}
         {userInfo.courses?.map((item, index) => (
-          <Link key={index} href={`/courses/${item.id}`}>
-            <div className={styles.item}>
-              <span>{e2p(index + 1)}</span>
-              {item.title}
-            </div>
-          </Link>
+          <ItemBox key={index} index={index} item={item} />
         ))}
       </div>
     );
